@@ -28,7 +28,7 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public void getUserForSave(User user) {
+    public void setUserForSave(User user) {
         User userFromDB = userRepository.findByUsername(user.getUsername());
         user.setRoles(Collections.singleton(new Role(1L, "ROLE_USER")));
         user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
@@ -38,32 +38,32 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public void getIdForDelete(Long id) {
+    public void setIdForDelete(Long id) {
         User user = entityManager.find(User.class, id);
         entityManager.remove(user);
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public List<User> setListUsers() {
+    public List<User> getListUsers() {
         List<User> list = entityManager.createQuery("select user from User user ").getResultList();
         return list;
     }
 
     @Override
-    public User getIdForUser(long id) {
+    public User getUserById(long id) {
         User user = entityManager.find(User.class, id);
         entityManager.detach(user);
         return user;
     }
 
     @Override
-    public void getIdAndUserForEdit(long id, User user) {
+    public void setIdAndUserForEdit(long id, User user) {
         entityManager.merge(user);
     }
 
     @Override
-    public User getUsernameForUser(String username) {
+    public User getUserByUsername(String username) {
         User user = userRepository.findByUsername(username);
         return user;
     }

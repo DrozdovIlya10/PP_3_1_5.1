@@ -19,37 +19,37 @@ public class UserServiceImp implements UserService {
 
     @Transactional
     @Override
-    public void getIdForDelete(Long id) {
-        userDao.getIdForDelete(id);
+    public void setIdForDelete(Long id) {
+        userDao.setIdForDelete(id);
     }
 
     @Transactional
     @Override
-    public void getUserForSave(User user) {
-        userDao.getUserForSave(user);
+    public void setUserForSave(User user) {
+        userDao.setUserForSave(user);
     }
 
     @Transactional(readOnly = true)
     @Override
-    public List<User> setListUsers() {
-        return userDao.setListUsers();
+    public List<User> getListUsers() {
+        return userDao.getListUsers();
     }
 
     @Transactional
     @Override
-    public User getIdAndUserForEdit(long id) {
-        return userDao.getIdForUser(id);
+    public User setIdAndUserForEdit(long id) {
+        return userDao.getUserById(id);
     }
 
     @Transactional
     @Override
     public void getIdForUser(long id, User user) {
-        userDao.getIdAndUserForEdit(id, user);
+        userDao.setIdAndUserForEdit(id, user);
     }
 
     @Transactional
     @Override
-    public User getUsernameForUser(String username) throws UsernameNotFoundException {
-        return userDao.getUsernameForUser(username);
+    public User getUserByUsername(String username) throws UsernameNotFoundException {
+        return userDao.getUserByUsername(username);
     }
 }

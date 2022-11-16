@@ -32,7 +32,7 @@ public class UsersController {
 
     @PostMapping()
     public String create(@ModelAttribute("user") User user) {
-        userService.getUserForSave(user);
+        userService.setUserForSave(user);
         return "redirect:/admin";
     }
 
@@ -40,13 +40,13 @@ public class UsersController {
 
     @GetMapping("/admin")
     public String index(Model model) {
-        model.addAttribute("people", userService.setListUsers());
+        model.addAttribute("people", userService.getListUsers());
         return "admin";
     }
 
     @GetMapping("/admin/{id}/edit")
     public String edit(Model model, @PathVariable("id") long id) {
-        model.addAttribute("user", userService.getIdAndUserForEdit(id));
+        model.addAttribute("user", userService.setIdAndUserForEdit(id));
         return "edit";
     }
 
@@ -58,7 +58,7 @@ public class UsersController {
 
     @PostMapping("admin/delete/{id}")
     public String delete(@PathVariable("id") long id) {
-        userService.getIdForDelete(id);
+        userService.setIdForDelete(id);
         return "redirect:/admin";
     }
 
@@ -67,7 +67,7 @@ public class UsersController {
     @GetMapping("/user")
     public String show(Model model) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("user", userService.getUsernameForUser(auth.getName()));
+        model.addAttribute("user", userService.getUserByUsername(auth.getName()));
         return "user";
     }
 

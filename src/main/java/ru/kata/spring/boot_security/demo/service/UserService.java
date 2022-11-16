@@ -5,16 +5,16 @@ import ru.kata.spring.boot_security.demo.model.User;
 import java.util.List;
 
 public interface UserService {
-    void getUserForSave(User user);
+    void setUserForSave(User user);
 
-    List<User> setListUsers();
+    List<User> getListUsers();
 
-    void getIdForDelete(Long id);
+    void setIdForDelete(Long id);
 
     void getIdForUser(long id, User user);
 
-    User getIdAndUserForEdit(long id);
+    User setIdAndUserForEdit(long id);
 
-    User getUsernameForUser(String name);
+    User getUserByUsername(String name);
 
 }
