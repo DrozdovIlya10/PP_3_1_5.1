@@ -13,6 +13,7 @@ import java.util.List;
 public class UserServiceImp implements UserService {
     private final UserDao userDao;
 
+
     public UserServiceImp(UserDao userDao) {
         this.userDao = userDao;
     }
@@ -37,19 +38,26 @@ public class UserServiceImp implements UserService {
 
     @Transactional
     @Override
-    public User setIdAndUserForEdit(long id) {
-        return userDao.getUserById(id);
+    public User getIdForUser(long id) {
+        return userDao.getIdForUser(id);
     }
 
     @Transactional
     @Override
-    public void getIdForUser(long id, User user) {
-        userDao.setIdAndUserForEdit(id, user);
+    public void setUserForEdit(User user) {
+        userDao.setUserForEdit(user);
     }
 
     @Transactional
     @Override
-    public User getUserByUsername(String username) throws UsernameNotFoundException {
-        return userDao.getUserByUsername(username);
+    public User getUserByEmail(String email) throws UsernameNotFoundException {
+        return userDao.getUserByEmail(email);
     }
+
+    @Transactional
+    @Override
+    public User getUserByUsername(String name) throws UsernameNotFoundException {
+        return userDao.getUserByUsername(name);
+    }
+
 }

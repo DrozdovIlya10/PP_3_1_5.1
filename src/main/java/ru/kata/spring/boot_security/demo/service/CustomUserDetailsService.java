@@ -1,4 +1,3 @@
-
 package ru.kata.spring.boot_security.demo.service;
 
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,11 +16,11 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 
-        User myUser = userService.getUserByUsername(username);
+        User myUser = userService.getUserByEmail(email);
         if (myUser == null) {
-            throw new UsernameNotFoundException("Unknown user: " + username);
+            throw new UsernameNotFoundException("Not found !");
         }
         return myUser;
     }

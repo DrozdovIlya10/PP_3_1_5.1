@@ -52,6 +52,10 @@ public class AppContext {
         Properties properties = new Properties();
         properties.put("hibernate.show_sql", environment.getRequiredProperty("hibernate.show_sql"));
         properties.put("hibernate.hbm2ddl.auto", environment.getRequiredProperty("hibernate.hbm2ddl.auto"));
+        properties.put("spring.sql.init.mode", environment.getRequiredProperty("spring.sql.init.mode"));
+        properties.put("spring.jpa.defer-datasource-initialization", environment.getRequiredProperty("spring.jpa.defer-datasource-initialization"));
+        properties.put("spring.jpa.properties.hibernate.dialect", environment.getRequiredProperty("spring.jpa.properties.hibernate.dialect"));
+
         return properties;
     }
 

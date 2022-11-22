@@ -11,9 +11,12 @@ public interface UserDao {
 
     void setIdForDelete(Long id);
 
-    User getUserById(long id);
+    User getIdForUser(long id);
 
-    void setIdAndUserForEdit(long id, User user);
+    void setUserForEdit(User user);
 
-    User getUserByUsername(String username);
+    User getUserByEmail(String email);
+
+    User getUserByUsername(String name);
+
 }

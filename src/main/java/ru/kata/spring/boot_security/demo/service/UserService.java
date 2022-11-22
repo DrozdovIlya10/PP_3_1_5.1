@@ -11,9 +11,11 @@ public interface UserService {
 
     void setIdForDelete(Long id);
 
-    void getIdForUser(long id, User user);
+    void setUserForEdit( User user);
 
-    User setIdAndUserForEdit(long id);
+    User getIdForUser(long id);
+
+    User getUserByEmail(String email);
 
     User getUserByUsername(String name);
 
