@@ -19,6 +19,5 @@ public interface UserService {
 
     User getUserByUsername(String name);
 
-    void addDefaultUser();
 
 }

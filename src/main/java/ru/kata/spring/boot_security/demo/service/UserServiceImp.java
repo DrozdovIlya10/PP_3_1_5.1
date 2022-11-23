@@ -67,17 +67,4 @@ public class UserServiceImp implements UserService {
         return userDao.getUserByUsername(name);
     }
 
-    @Override
-    public void addDefaultUser() {
-        Set<Role> roles1 = new HashSet<>();
-        roles1.add(roleDao.getIdForRole(1L));
-        Set<Role> roles2 = new HashSet<>();
-        roles2.add(roleDao.getIdForRole(1L));
-        roles2.add(roleDao.getIdForRole(2L));
-        User user1 = new User("user","user",0,"user@email.ru","123",roles1);
-        User user2 = new User("admin","admin",0,"admin@email.ru","123",roles2);
-        setUserForSave(user1);
-        setUserForSave(user2);
-    }
-
 }

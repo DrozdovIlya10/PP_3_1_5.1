@@ -12,6 +12,4 @@ public interface RoleService {
 
     Role getIdForRole(long id);
 
-    void addDefaultRole();
-
 }

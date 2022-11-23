@@ -35,10 +35,5 @@ public class RoleServiceImp implements RoleService{
         return roleDao.getIdForRole(id);
     }
 
-    @Override
-    public void addDefaultRole() {
-        roleDao.setRoleForSave(new Role(1L,"ROLE_USER"));
-        roleDao.setRoleForSave(new Role(2L,"ROLE_ADMIN"));
-    }
 
 }
