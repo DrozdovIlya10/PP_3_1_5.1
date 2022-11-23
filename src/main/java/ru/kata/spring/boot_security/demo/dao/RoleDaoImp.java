@@ -29,4 +29,18 @@ public class RoleDaoImp implements RoleDao {
         return new HashSet<>(q.getResultList());
     }
 
+    @Override
+    public Role getIdForRole(long id){
+        Role role = entityManager.find(Role.class, id);
+        entityManager.detach(role);
+        return role;
+    }
+
+
+    @Override
+    public void setRoleForSave(Role role) {
+        entityManager.persist(role);
+        entityManager.flush();
+    }
+
 }

@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.kata.spring.boot_security.demo.dao.RoleDao;
 import ru.kata.spring.boot_security.demo.model.Role;
 
+import javax.annotation.PostConstruct;
 import java.util.List;
 import java.util.Set;
 
@@ -26,6 +27,18 @@ public class RoleServiceImp implements RoleService{
     @Override
     public Set<Role> findByIdRoles(List<Long> roles) {
         return roleDao.findByIdRoles(roles);
+    }
+
+    @Transactional
+    @Override
+    public Role getIdForRole(long id){
+        return roleDao.getIdForRole(id);
+    }
+
+    @Override
+    public void addDefaultRole() {
+        roleDao.setRoleForSave(new Role(1L,"ROLE_USER"));
+        roleDao.setRoleForSave(new Role(2L,"ROLE_ADMIN"));
     }
 
 }

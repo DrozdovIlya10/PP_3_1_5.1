@@ -9,4 +9,8 @@ public interface RoleDao {
     List<Role> getListRoles();
 
     Set<Role> findByIdRoles(List<Long> roles);
+
+    Role getIdForRole(long id);
+
+    void setRoleForSave(Role role);
 }

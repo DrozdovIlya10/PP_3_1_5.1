@@ -10,4 +10,8 @@ public interface RoleService {
 
     Set<Role> findByIdRoles(List<Long> roles);
 
+    Role getIdForRole(long id);
+
+    void addDefaultRole();
+
 }
