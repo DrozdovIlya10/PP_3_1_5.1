@@ -51,8 +51,8 @@ public class UserServiceImp implements UserService {
 
     @Transactional
     @Override
-    public void setUserForEdit(User user) {
-        userDao.setUserForEdit(user);
+    public void setUserForEdit(User user, long id) {
+        userDao.setUserForEdit(user,id);
     }
 
     @Transactional

@@ -52,8 +52,15 @@ public class UserDaoImp implements UserDao {
     }
 
     @Override
-    public void setUserForEdit(User user) {
-        entityManager.merge(user);
+    public void setUserForEdit(User user, long id) {
+        User user1 = getIdForUser(id);
+        user1.setUsername(user.getUsername());
+        user1.setLastname(user.getLastname());
+        user1.setAge(user.getAge());
+        user1.setEmail(user.getEmail());
+        user1.setRoles(user.getRoles());
+        user1.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        entityManager.merge(user1);
     }
 
     @Override

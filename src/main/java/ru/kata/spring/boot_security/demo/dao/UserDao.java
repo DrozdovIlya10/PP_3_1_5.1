@@ -13,7 +13,7 @@ public interface UserDao {
 
     User getIdForUser(long id);
 
-    void setUserForEdit(User user);
+    void setUserForEdit(User user, long id);
 
     User getUserByEmail(String email);
 

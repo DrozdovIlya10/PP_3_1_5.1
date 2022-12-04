@@ -8,9 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping()
 public class OtherController {
 
-    @GetMapping()
+    @GetMapping("/login")
     public String open() {
         return "/login";
+    }
+
+    @GetMapping()
+    public String page() {
+        return "page";
     }
 
 }
