@@ -33,7 +33,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").usernameParameter("email")
+                .formLogin().loginPage("/login")
                 .successHandler(successUserHandler)
                 .permitAll()
                 .and()

@@ -2,9 +2,9 @@ package ru.kata.spring.boot_security.demo.model;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.Collection;
 import java.util.Set;
 
@@ -15,15 +15,13 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Size(min = 2, message = "Не меньше 5 знаков")
     private String username;
     private String lastname;
     private int age;
     private String email;
-    @Size(min = 2, message = "Не меньше 5 знаков")
     private String password;
 
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.LAZY)
     private Set<Role> roles;
 
     public User() {
@@ -123,3 +121,4 @@ public class User implements UserDetails {
     }
 
 }
+

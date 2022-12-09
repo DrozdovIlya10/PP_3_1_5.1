@@ -28,7 +28,7 @@ public class AdminRestController {
     @GetMapping(value = "/users")
     public ResponseEntity<?> list() {
         try {
-            List<User> list = userService.getListUsers();
+            List<User> list = userService.findAllUsers();
             return new ResponseEntity<>(list, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -38,7 +38,7 @@ public class AdminRestController {
     @GetMapping(value = "/user/{id}")
     public ResponseEntity<?> user(Model model, @PathVariable("id") long id) {
         try {
-            User user = userService.getIdForUser(id);
+            User user = userService.getUserById(id);
             return new ResponseEntity<>(user, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -48,7 +48,7 @@ public class AdminRestController {
     @PutMapping(value = "/user/{id}")
     public ResponseEntity<?> update(@PathVariable("id") long id, @Valid @RequestBody User user) {
         try {
-            userService.setUserForEdit(user,id);
+            userService.updateUserByIDAndUser(user, id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -59,7 +59,7 @@ public class AdminRestController {
     public ResponseEntity<?> delete(@PathVariable("id") long id) {
 
         try {
-            userService.setIdForDelete(id);
+            userService.deleteUserById(id);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -72,7 +72,7 @@ public class AdminRestController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
         try {
-            userService.setUserForSave(user);
+            userService.saveUser(user);
             return new ResponseEntity<>(user, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -84,7 +84,7 @@ public class AdminRestController {
     public ResponseEntity<?> show() {
         try {
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-            User user = userService.getUserByUsername(auth.getName());
+            User user = userService.findUserByUsername(auth.getName());
             return new ResponseEntity<>(user, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
